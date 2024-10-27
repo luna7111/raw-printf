@@ -6,11 +6,33 @@
 /*   By: ldel-val <ldel-val@student.42madrid.com>  |  |           *           */
 /*                                                 \  '.___.;       +         */
 /*   Created: 2024/10/26 15:10:53 by ldel-val       '._  _.'   .        .     */
-/*   Updated: 2024/10/27 01:19:06 by ldel-val          ``                     */
+/*   Updated: 2024/10/27 15:59:31 by ldel-val          ``                     */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft/libft.h"
 #include "libftprintf.h"
+
+int	ft_print_char(char character)
+{
+	ft_putchar_fd(character, STDOUT);
+	return (sizeof(char));
+}
+
+int	ft_print_string(char *string)
+{
+	ft_putstr_fd(string, STDOUT);
+	return (ft_strlen(string));
+}
+
+int	ft_print_specifier(char const *format, va_list arguments)
+{
+	if (ft_strncmp("%c", format, 2) == 0)
+		return (ft_print_char(va_arg(arguments, int)) + 1);
+	else if (ft_strncmp("%s", format, 2) == 0)
+		return (ft_print_string(va_arg(arguments, char *)));
+	return (1);
+}
 
 int	ft_printf(char const *format, ...)
 {
@@ -22,15 +44,16 @@ int	ft_printf(char const *format, ...)
 	while (*format)
 	{
 		if (*format == '%')
-			print_specifier
+			format += ft_print_specifier(format, arguments);
 		else
-			ft_print
+		{
+			format += ft_print_char(*format);
+		}
 	}
 	return (bytes_printed);
 }
 
 int	main(void)
 {
-	printf("%Hello world! %% %d %ld\n\n", 42, (size_t)42);
-	ft_printf("%Hello world! %% %d %ld\n\n", 42, (size_t)42);
+	ft_printf("Hello world! %c %s\n", 'A', "HELLO WORLD!");
 }
