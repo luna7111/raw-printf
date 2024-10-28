@@ -6,7 +6,7 @@
 /*   By: ldel-val <ldel-val@student.42madrid.com>  |  |           *           */
 /*                                                 \  '.___.;       +         */
 /*   Created: 2024/10/26 17:01:10 by ldel-val       '._  _.'   .        .     */
-/*   Updated: 2024/10/27 00:08:06 by ldel-val          ``                     */
+/*   Updated: 2024/10/28 11:27:07 by ldel-val          ``                     */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@
 //printf
 # include <stdio.h>
 int	ft_printf(char const *format, ...);
-
+# include "libft/libft.h"
 #endif
