@@ -6,32 +6,37 @@
 /*   By: ldel-val <ldel-val@student.42madrid.com>  |  |           *           */
 /*                                                 \  '.___.;       +         */
 /*   Created: 2024/10/26 15:10:53 by ldel-val       '._  _.'   .        .     */
-/*   Updated: 2024/10/28 12:01:50 by ldel-val          ``                     */
+/*   Updated: 2024/10/28 20:23:50 by ldel-val          ``                     */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
-#include "libftprintf.h"
-
-int	ft_print_char(char character)
-{
-	ft_putchar_fd(character, STDOUT);
-	return (sizeof(char));
-}
-
-int	ft_print_string(char *string)
-{
-	ft_putstr_fd(string, STDOUT);
-	return (ft_strlen(string));
-}
 
 int	ft_print_specifier(char const *format, va_list arguments)
 {
 	if (ft_strncmp("%c", format, 2) == 0)
-		return (ft_print_char(va_arg(arguments, int)) + 1);
+		return (ft_putchar_fd(va_arg(arguments, int), STDOUT));
 	else if (ft_strncmp("%s", format, 2) == 0)
-		return (ft_print_string(va_arg(arguments, char *)));
-	return (1);
+		return (ft_putstr_fd(va_arg(arguments, char *), STDOUT));
+	else if (ft_strncmp("%p", format, 2) == 0)
+		return (ft_putptr_fd(va_arg(arguments, void *), STDOUT));
+	else if (ft_strncmp("%d", format, 2) == 0)
+		return (ft_putnbr_fd(va_arg(arguments, int), STDOUT));
+	else if (ft_strncmp("%i", format, 2) == 0)
+		return (ft_putnbr_fd(va_arg(arguments, int), STDOUT));
+	else if (ft_strncmp("%u", format, 2) == 0)
+		return (ft_putunbr_fd(va_arg(arguments, unsigned int), STDOUT));
+	else if (ft_strncmp("%x", format, 2) == 0)
+		return (ft_puthex_fd(va_arg(arguments, unsigned int), STDOUT));
+	else if (ft_strncmp("%X", format, 2) == 0)
+		return (ft_putuphex_fd(va_arg(arguments, unsigned int), STDOUT));
+	else if (ft_strncmp("%%", format, 2) == 0)
+		return(ft_putchar_fd('%', STDOUT));
+	else
+	{
+		ft_putchar_fd('%', STDOUT);
+		return (ft_putchar_fd(format[1], STDOUT) + 1);
+	}
 }
 
 int	ft_printf(char const *format, ...)
@@ -44,10 +49,14 @@ int	ft_printf(char const *format, ...)
 	while (*format)
 	{
 		if (*format == '%')
-			format += ft_print_specifier(format, arguments);
+		{
+			bytes_printed += ft_print_specifier(format, arguments);
+			format += 2;
+		}
 		else
 		{
-			format += ft_print_char(*format);
+			bytes_printed += ft_putchar_fd(*format, STDOUT);
+			format ++;
 		}
 	}
 	return (bytes_printed);
@@ -55,5 +64,10 @@ int	ft_printf(char const *format, ...)
 
 int	main(void)
 {
-	ft_printf("Hello world! %c %s\n", 'A', "HELLO WORLD!");
+	int ft_return;
+	int	or_return;
+
+	ft_return = ft_printf("%u\n", -42);
+	or_return = printf("%u\n", -42);
+	printf("ft_return: %d, or_return %d", ft_return, or_return);
 }
