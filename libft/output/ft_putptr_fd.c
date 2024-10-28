@@ -6,7 +6,7 @@
 /*   By: ldel-val <ldel-val@student.42madrid.c     |  |           *           */
 /*                                                 \  '.___.;       +         */
 /*   Created: 2024/10/28 16:10:57 by ldel-val       '._  _.'   .        .     */
-/*   Updated: 2024/10/28 18:02:56 by ldel-val          ``                     */
+/*   Updated: 2024/10/28 20:23:20 by ldel-val          ``                     */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@ int	ft_putptr_fd(void *ptr, int fd)
 	int	printed_bytes;
 
 	printed_bytes = write(fd, "0x", 2);
-	printed_bytes += ft_puthex_fd((size_t)ptr, fd);
+	printed_bytes += ft_puthex_fd((long unsigned int)ptr, fd);
 	return (printed_bytes);
 }
