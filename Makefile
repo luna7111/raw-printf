@@ -6,11 +6,13 @@
 #    By: ldel-val <ldel-val@student.42madrid.c     |  |           *            #
 #                                                  \  '.___.;       +          #
 #    Created: 2024/10/28 20:24:50 by ldel-val       '._  _.'   .        .      #
-#    Updated: 2024/10/29 00:08:07 by ldel-val          ``                      #
+#    Updated: 2024/10/29 12:23:40 by ldel-val          ``                      #
 #                                                                              #
 # **************************************************************************** #
 
-LIBFT = libft/libft.a
+LIBFT_DIR = libft
+
+LIBFT = $(LIBFT_DIR)/libft.a
 
 NAME = libftprintf.a
 
@@ -28,16 +30,19 @@ SRC = ft_printf.c
 
 OBJ = $(SRC:.c=.o)
 
-$(LIBFT):
-	$(MAKE) -C libft
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) $(LIBFT)
 	$(AR) $(ARFLAGS) $(NAME) $(OBJ)
 clean:
 	$(RM) $(OBJ)
-fclean:
+	@make clean -C $(LIBFT_DIR)
+fclean: clean
 	$(RM) $(NAME)
-re: fclean all
+	@make fclean -C $(LIBFT_DIR)
+$(LIBFT):
+	$(MAKE) -C $(LIBFT_DIR)
+
+re: fclean all 
 
 .PHONY: all re clean fclean bonus
