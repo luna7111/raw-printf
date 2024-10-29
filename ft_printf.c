@@ -6,7 +6,7 @@
 /*   By: ldel-val <ldel-val@student.42madrid.com>  |  |           *           */
 /*                                                 \  '.___.;       +         */
 /*   Created: 2024/10/26 15:10:53 by ldel-val       '._  _.'   .        .     */
-/*   Updated: 2024/10/29 00:20:24 by ldel-val          ``                     */
+/*   Updated: 2024/10/29 13:05:05 by ldel-val          ``                     */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,4 @@ int	ft_printf(char const *format, ...)
 		}
 	}
 	return (bytes_printed);
-}
-
-int	main(void)
-{
-	int ft_return;
-	int	or_return;
-
-	ft_return = ft_printf("%p\n", NULL);
-	or_return = printf("%p\n", NULL);
-	printf("ft_return: %d, or_return %d", ft_return, or_return);
 }
