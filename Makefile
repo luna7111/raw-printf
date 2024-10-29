@@ -6,7 +6,7 @@
 #    By: ldel-val <ldel-val@student.42madrid.c     |  |           *            #
 #                                                  \  '.___.;       +          #
 #    Created: 2024/10/28 20:24:50 by ldel-val       '._  _.'   .        .      #
-#    Updated: 2024/10/29 14:45:03 by ldel-val          ``                      #
+#    Updated: 2024/10/29 14:56:15 by ldel-val          ``                      #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ clean:
 	$(RM) $(OBJ)
 	@make clean -C $(LIBFT_DIR)
 fclean:
-	$(RM) $(NAME)
+	$(RM) $(NAME) $(OBJ)
 	@make fclean -C $(LIBFT_DIR)
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
