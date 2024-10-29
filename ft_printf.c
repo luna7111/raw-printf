@@ -6,7 +6,7 @@
 /*   By: ldel-val <ldel-val@student.42madrid.com>  |  |           *           */
 /*                                                 \  '.___.;       +         */
 /*   Created: 2024/10/26 15:10:53 by ldel-val       '._  _.'   .        .     */
-/*   Updated: 2024/10/29 14:24:11 by ldel-val          ``                     */
+/*   Updated: 2024/10/29 15:19:25 by ldel-val          ``                     */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,6 @@ int	ft_printf(char const *format, ...)
 			format ++;
 		}
 	}
+	va_end(arguments);
 	return (bytes_printed);
 }
