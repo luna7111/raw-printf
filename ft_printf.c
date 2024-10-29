@@ -6,7 +6,7 @@
 /*   By: ldel-val <ldel-val@student.42madrid.com>  |  |           *           */
 /*                                                 \  '.___.;       +         */
 /*   Created: 2024/10/26 15:10:53 by ldel-val       '._  _.'   .        .     */
-/*   Updated: 2024/10/29 13:05:05 by ldel-val          ``                     */
+/*   Updated: 2024/10/29 14:24:11 by ldel-val          ``                     */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ft_print_specifier(char const *format, va_list arguments)
 	else if (ft_strncmp("%X", format, 2) == 0)
 		return (ft_putuphex_fd(va_arg(arguments, unsigned int), STDOUT));
 	else if (ft_strncmp("%%", format, 2) == 0)
-		return(ft_putchar_fd('%', STDOUT));
+		return (ft_putchar_fd('%', STDOUT));
 	else
 	{
 		ft_putchar_fd('%', STDOUT);
