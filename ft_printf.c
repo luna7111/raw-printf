@@ -6,7 +6,7 @@
 /*   By: ldel-val <ldel-val@student.42madrid.com>  |  |           *           */
 /*                                                 \  '.___.;       +         */
 /*   Created: 2024/10/26 15:10:53 by ldel-val       '._  _.'   .        .     */
-/*   Updated: 2024/10/29 15:19:25 by ldel-val          ``                     */
+/*   Updated: 2024/11/02 23:12:52 by ldel-val          ``                     */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ int	ft_printf(char const *format, ...)
 	{
 		if (*format == '%')
 		{
+			if (format[1] == '\0')
+				return (bytes_printed);
 			bytes_printed += ft_print_specifier(format, arguments);
 			format += 2;
 		}
