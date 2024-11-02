@@ -6,7 +6,7 @@
 #    By: ldel-val <ldel-val@student.42madrid.c     |  |           *            #
 #                                                  \  '.___.;       +          #
 #    Created: 2024/10/28 20:24:50 by ldel-val       '._  _.'   .        .      #
-#    Updated: 2024/10/29 15:07:32 by ldel-val          ``                      #
+#    Updated: 2024/11/02 23:16:14 by ldel-val          ``                      #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT)
+	cp $(LIBFT) $(NAME)
 	$(AR) $(ARFLAGS) $(NAME) $(OBJ)
 clean:
 	$(RM) $(OBJ)
